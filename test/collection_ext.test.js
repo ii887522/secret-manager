@@ -68,13 +68,13 @@ test('array with an element that contains b: 2 to tree', () => {
 test('array with an element that contains c: 2 to tree', () => {
     const tree = new AvlTree();
     tree.insert('c', 2);
-    expect(toAvlTree([{ key: 'b', value: 2 }])).toEqual(tree);
+    expect(toAvlTree([{ key: 'c', value: 2 }])).toEqual(tree);
 });
 test('array with 2 elements to tree', () => {
     const tree = new AvlTree();
-    tree.insert('c', 2);
     tree.insert('a', 1);
-    expect(toAvlTree([{ key: 'b', value: 2 }])).toEqual(tree);
+    tree.insert('c', 2);
+    expect(toAvlTree([{ key: 'a', value: 1 }, { key: 'c', value: 2 }])).toEqual(tree);
 });
 test('array with 3 elements to tree', () => {
     const tree = new AvlTree();
