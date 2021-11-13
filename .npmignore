@@ -1,0 +1,8 @@
+.github
+.vscode
+.editorconfig
+.gitignore
+CODE_OF_CONDUCT.md
+tsconfig.*
+secrets.json
+coverage
