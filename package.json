@@ -1,6 +1,6 @@
 {
   "name": "@ii887522/secret-manager",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "It allows the user to save, copy, update and delete a secret for easier management without worrying about forgetting or losing secrets.",
   "main": "index.js",
   "bin": "index.js",
