@@ -43,6 +43,20 @@ function copyExistingSecret() {
     });
     console.log();
 }
+function viewExistingSecret() {
+    const secretArray = toArray(secrets);
+    showPagination(secretArray.map(secret => secret.key), {
+        query: 'Please type a choice to read its secret',
+        showHeader: () => {
+            console.log('         Secret List');
+            console.log('-----------------------------');
+        },
+        onSelected: index => {
+            console.log(`The secret of ${secretArray[index]?.key ?? ''} is ${secretArray[index]?.value ?? ''}`);
+        }
+    });
+    console.log();
+}
 function updateExistingSecret() {
     const secretArray = toArray(secrets);
     showPagination(secretArray.map(secret => secret.key), {
@@ -85,7 +99,7 @@ let isRunning = true;
 while (isRunning) {
     console.log('    Secret Manager v1.0.0');
     console.log('-----------------------------');
-    switch (keyInSelect(['Save a new secret', 'Copy an existing secret', 'Update an existing secret', 'Delete an existing secret'], 'Please type a choice', { cancel: 'Exit' })) {
+    switch (keyInSelect(['Save a new secret', 'Copy an existing secret', 'Read an existing secret', 'Update an existing secret', 'Delete an existing secret'], 'Please type a choice', { cancel: 'Exit' })) {
         case -1:
             isRunning = false;
             break;
@@ -96,8 +110,11 @@ while (isRunning) {
             copyExistingSecret();
             break;
         case 2:
+            viewExistingSecret();
+            break;
+        case 3:
             updateExistingSecret();
             break;
-        case 3: deleteExistingSecret();
+        case 4: deleteExistingSecret();
     }
 }
