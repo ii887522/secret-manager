@@ -4,13 +4,11 @@
 
 import { keyInSelect, question, questionNewPassword } from 'readline-sync'
 import { readFileSync, writeFileSync } from 'fs'
-import { AvlTree } from '@datastructures-js/binary-search-tree'
 import clipboard from 'clipboardy'
-import { toArray, toAvlTree } from './src/collection_ext.js'
-import { showPagination } from './src/components.js'
+import { AvlTree, showPagination } from '@ii887522/hydro'
 
 const secretsFilePath = 'secrets.json'
-let secrets: AvlTree<string, string>
+const secrets = new AvlTree<string, string>()
 
 function saveNewSecret (): void {
   while (true) {
@@ -20,14 +18,14 @@ function saveNewSecret (): void {
       console.error('Label for the secret must not be empty! Please try again.')
       continue
     }
-    if (secrets.has(label)) {
+    if (secrets.get(label) !== undefined) {
       console.error('Label for the secret already exists! Please try again.')
       continue
     }
     const secret = questionNewPassword(
       'Please enter a secret > ', { keepWhitespace: true, charlist: '$< -~>', min: 16, max: 64, confirmMessage: 'Please reenter the new secret > ' }
     )
-    secrets.insert(label, secret)
+    secrets.put(label, secret)
     console.log()
     console.log('You have successfully saved a new secret!')
     break
@@ -36,7 +34,7 @@ function saveNewSecret (): void {
 }
 
 function copyExistingSecret (): void {
-  const secretArray = toArray(secrets)
+  const secretArray = secrets.toArrayInorder()
   showPagination(
     secretArray.map(secret => secret.key),
     {
@@ -55,7 +53,7 @@ function copyExistingSecret (): void {
 }
 
 function viewExistingSecret (): void {
-  const secretArray = toArray(secrets)
+  const secretArray = secrets.toArrayInorder()
   showPagination(
     secretArray.map(secret => secret.key),
     {
@@ -73,7 +71,7 @@ function viewExistingSecret (): void {
 }
 
 function updateExistingSecret (): void {
-  const secretArray = toArray(secrets)
+  const secretArray = secrets.toArrayInorder()
   showPagination(
     secretArray.map(secret => secret.key),
     {
@@ -83,7 +81,7 @@ function updateExistingSecret (): void {
         console.log('-----------------------------')
       },
       onSelected: index => {
-        secrets.insert(
+        secrets.put(
           secretArray[index]?.key ?? '',
           questionNewPassword(
             'Please enter a new secret > ', { keepWhitespace: true, charlist: '$< -~>', min: 16, max: 64, confirmMessage: 'Please reenter the new secret > ' }
@@ -98,7 +96,7 @@ function updateExistingSecret (): void {
 }
 
 function deleteExistingSecret (): void {
-  const secretArray = toArray(secrets)
+  const secretArray = secrets.toArrayInorder()
   showPagination(
     secretArray.map(secret => secret.key),
     {
@@ -117,16 +115,14 @@ function deleteExistingSecret (): void {
 }
 
 try {
-  secrets = toAvlTree(JSON.parse(readFileSync(secretsFilePath).toString()))
-} catch (error: any) {
-  secrets = new AvlTree()
-}
+  secrets.putBulk(...JSON.parse(readFileSync(secretsFilePath).toString()))
+} catch (_error: any) { }
 
-process.on('exit', () => writeFileSync(secretsFilePath, JSON.stringify(toArray(secrets))))
+process.on('exit', () => writeFileSync(secretsFilePath, JSON.stringify(secrets.toArrayInorder())))
 
 let isRunning = true
 while (isRunning) {
-  console.log('    Secret Manager v1.0.0')
+  console.log('    Secret Manager v2.0.0')
   console.log('-----------------------------')
   switch (
     keyInSelect(
