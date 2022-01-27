@@ -14,15 +14,13 @@ It allows the user to save, copy, read, update and delete a secret for easier ma
 
 ## Table of contents
 - [Usage](https://github.com/ii887522/secret-manager#usage)
-- [Coding Style](https://github.com/ii887522/secret-manager#coding-style)
+- [Coding style](https://github.com/ii887522/secret-manager#coding-style)
 - [Prerequisites](https://github.com/ii887522/secret-manager#prerequisites)
 - [Install dependencies](https://github.com/ii887522/secret-manager#install-dependencies)
-- [Lint project](https://github.com/ii887522/secret-manager#lint-project)
-- [Automatically build project on save](https://github.com/ii887522/secret-manager#automatically-build-project-on-save)
-- [Start project](https://github.com/ii887522/secret-manager#start-project)
-- [Test project with code coverage analysis](https://github.com/ii887522/secret-manager#test-project-with-code-coverage-analysis)
-- [Automatically test project with code coverage analysis on change](https://github.com/ii887522/secret-manager#Automatically-test-project-with-code-coverage-analysis-on-change)
-- [Deploy project](https://github.com/ii887522/secret-manager#deploy-project)
+- [Lint the project](https://github.com/ii887522/secret-manager#lint-the-project)
+- [Build the project](https://github.com/ii887522/secret-manager#build-the-project)
+- [Automatically build the project on save](https://github.com/ii887522/secret-manager#automatically-build-the-project-on-save)
+- [Start the project](https://github.com/ii887522/secret-manager#start-the-project)
 
 ## Usage
 ```sh
