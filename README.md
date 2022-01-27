@@ -10,9 +10,9 @@
 [![Npm package license](https://badgen.net/npm/license/@ii887522/secret-manager)](https://npmjs.com/package/@ii887522/secret-manager)
 [![Npm package dependents](https://badgen.net/npm/dependents/@ii887522/secret-manager)](https://npmjs.com/package/@ii887522/secret-manager)
 
-It allows the user to save, copy, update and delete a secret for easier management without worrying about forgetting or losing secrets.
+It allows the user to save, copy, read, update and delete a secret for easier management without worrying about forgetting or losing secrets.
 
-## Table of Contents
+## Table of contents
 - [Usage](https://github.com/ii887522/secret-manager#usage)
 - [Coding Style](https://github.com/ii887522/secret-manager#coding-style)
 - [Prerequisites](https://github.com/ii887522/secret-manager#prerequisites)
@@ -29,11 +29,11 @@ It allows the user to save, copy, update and delete a secret for easier manageme
 secret-manager
 ```
 
-## Coding Style
+## Coding style
 This project follows [Javascript Standard Style](https://standardjs.com/). Please familiarize yourself with the rules provided in the coding style and
 make sure all the proposed code changes in your commits are conforming to the style before making a merge request. You can also make use of
 StandardJS - Javascript Standard Style which is a [Visual Studio Code](https://code.visualstudio.com/) plugin and `npm run lint` command under the
-[Lint project](https://github.com/ii887522/secret-manager#lint-project) section to support you.
+[Lint the project](https://github.com/ii887522/secret-manager#lint-the-project) section to support you.
 
 ## Prerequisites
 - Windows 11 or Linux
@@ -42,39 +42,29 @@ StandardJS - Javascript Standard Style which is a [Visual Studio Code](https://c
   - Markdown All in One
   - StandardJS - Javascript Standard Style
   - YAML
-- [Node.js 16.10.0](https://nodejs.org/en/) and later
+- [Node.js 16.13.2](https://nodejs.org/en/) and later
 
 ## Install dependencies
 ```sh
-ncu -u && npm install
+npm install
 ```
 
-## Lint project
+## Lint the project
 ```sh
 npm run lint
 ```
 
-## Automatically build project on save
+## Build the project
 ```sh
 npm run build
 ```
 
-## Start project
+## Automatically build the project on save
+```sh
+npm run build:watch
+```
+
+## Start the project
 ```sh
 npm start
-```
-
-## Test project with code coverage analysis
-```sh
-npm test
-```
-
-## Automatically test project with code coverage analysis on change
-```sh
-npm run test:watch
-```
-
-## Deploy project
-```sh
-npm run deploy
 ```
